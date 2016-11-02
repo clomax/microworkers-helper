@@ -1,0 +1,6 @@
+*.idea
+*.cache
+data/cookie.txt
+data/new_job.wav
+data/mw_helper.db
+__pycache__/
