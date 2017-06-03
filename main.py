@@ -1,13 +1,19 @@
+#!/usr/bin/python3
+
 from tkinter import *
 from tkinter import ttk
 from mw_helper import MWHelper
 import webbrowser
 import sqlite3
-import winsound
+import subprocess
 
 TITLE_FONT = ("Helvetica", 12, "bold")
 LIST_ITEM_FONT = ("Helvetica", 12)
 STATUSBAR_FONT = ("Helvetica", 10)
+
+def send_message(message):
+	subprocess.Popen(['notify-send', message])
+	return
 
 class MWHelperGUI(Tk):
 
@@ -67,7 +73,8 @@ class MWHelperGUI(Tk):
             self.jobs_button.config(bg="red")
             if (self.new_jobs < num_jobs):
                 self.new_jobs = num_jobs
-                winsound.PlaySound('data/new_job.wav', winsound.SND_FILENAME)
+                send_message("New microworkers job!")
+                #winsound.PlaySound('data/new_job.wav', winsound.SND_FILENAME)
 
         else:
             self.new_jobs = 0
